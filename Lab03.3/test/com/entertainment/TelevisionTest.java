@@ -16,12 +16,12 @@ public class TelevisionTest {
   }
 
   @Test
-  public void setVolume() {
+  public void testSetVolume() {
     assertEquals(25, tv.getVolume());
   }
 
   @Test
-  public void setVolumeIllegalArgumentsException() {
+  public void testSetVolumeIllegalArgumentsException() {
     int oldVolume = tv.getVolume();
     try{
       tv.setVolume(-20);
@@ -32,14 +32,14 @@ public class TelevisionTest {
   }
 
   @Test
-  public void changeChannel() throws InvalidChannelException {
+  public void testChangeChannel() throws InvalidChannelException {
     int channel = (Television.MAX_CHANNEL+Television.MAX_CHANNEL)/2;
     tv.changeChannel(channel);
     assertEquals(channel, tv.getCurrentChannel());
   }
 
   @Test
-  public void testChangeChannelInvalidChannelException() throws InvalidChannelException{
+  public void testChangeChannelInvalidChannelException() {
     int oldChannel = tv.getCurrentChannel();
     try{
       tv.changeChannel(1000);
@@ -50,7 +50,7 @@ public class TelevisionTest {
   }
 
   @Test
-  public void compareTo() {
+  public void testCompareTo() {
     Television other1 = new Television();
     other1.setBrand("LG");
 
