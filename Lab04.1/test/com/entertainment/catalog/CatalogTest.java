@@ -10,6 +10,7 @@ package com.entertainment.catalog;
 
 import static org.junit.Assert.*;
 import java.util.Collection;
+import java.util.Map;
 import org.junit.Test;
 import com.entertainment.Television;
 
@@ -24,4 +25,39 @@ public class CatalogTest {
     assertNotNull(tvs);
     assertTrue(tvs.isEmpty());
   }
+
+  @Test
+  public void testFindBrandWithMatches(){
+    Collection<Television> tvs = Catalog.findByBrand("Sony");
+    assertNotNull(tvs);
+    assertFalse(tvs.isEmpty());
+    assertEquals(7, tvs.size());
+  }
+
+  @Test
+  public void testFindByBrandsNoBrands(){
+    Map<String, Collection<Television>> tvs = Catalog.findByBrands();
+    assertNotNull(tvs);
+    assertTrue(tvs.isEmpty());
+  }
+
+  @Test
+  public void testFindByBrandsSomeBrands(){
+//    fail("Test not yet implemented");
+    var tvs = Catalog.findByBrands("Sony","Zenith","NO_MATCHES");
+    assertNotNull(tvs);
+    assertFalse(tvs.isEmpty());
+    assertEquals(3,tvs.size());
+    assertEquals(7, tvs.get("Sony").size());
+    assertEquals(9, tvs.get("Zenith").size());
+
+  }
+
+//  @Test
+//  public void testFindByBrandsSomeBrandsMixed(){
+////    fail("Test not yet implemented");
+//    Map<String, Collection<Television>> tvs = Catalog.findByBrands("Sony","LG","No-Mathches");
+//    assertNotNull(tvs);
+//    assertFalse(tvs.isEmpty());
+//  }
 }
