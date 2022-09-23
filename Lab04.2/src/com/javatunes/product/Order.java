@@ -22,8 +22,14 @@ public class Order {
    * get the items from the cart and iterate over them, print each item's product code
    * get cart total and print
    */
-  public void processCart(Object reference_to_cart) {
-    
+  public void processCart(ShoppingCart<? extends Product> cart) {
+
+    for(Product items: cart.allItems()){
+      System.out.println(items.getCode());
+      System.out.println(cart.total());
+      System.out.println(getId());
+    }
+
   }
   
   public String getId() {

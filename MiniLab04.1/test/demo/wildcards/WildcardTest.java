@@ -20,7 +20,7 @@ public class WildcardTest {
     Collection<Number> numbers = new ArrayList<>();
     numbers.add(Integer.valueOf(7));    // not autoboxing here just for emphasis
     numbers.add(Double.valueOf(3.14));  // numbers has subtypes in it
-    numbers.add(Long.valueOf(12));      // inheritance 101 (IS-A)
+    numbers.add(12);      // inheritance 101 (IS-A)
     
     // sum() expects a Collection<Number> and that's what I'm passing
     // my Collection<Number> can *of course* contain Integers, Doubles, Longs (IS-A)
