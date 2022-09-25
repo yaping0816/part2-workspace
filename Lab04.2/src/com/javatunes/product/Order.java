@@ -22,14 +22,14 @@ public class Order {
    * get the items from the cart and iterate over them, print each item's product code
    * get cart total and print
    */
-  public void processCart(ShoppingCart<? extends Product> cart) {
+  public void processCart(ShoppingCart<? extends Product> cart) {  //if ShoppingCart<Product>, it only pass Product, not subclass of Product, because compile doesn't know you want super class of Product or subclass of Product, not knpw which direction of IS-A is
 
     for(Product items: cart.allItems()){
       System.out.println(items.getCode());
-      System.out.println(cart.total());
-      System.out.println(getId());
-    }
 
+    }
+    System.out.println(cart.total());
+    System.out.println(getId());
   }
   
   public String getId() {
