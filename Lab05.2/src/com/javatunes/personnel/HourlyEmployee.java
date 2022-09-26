@@ -11,8 +11,7 @@ package com.javatunes.personnel;
 import java.sql.Date;
 import java.util.Objects;
 
-public class HourlyEmployee
-extends Employee {
+public class HourlyEmployee extends Employee {
   private Double rate;
   private Double hours;
   

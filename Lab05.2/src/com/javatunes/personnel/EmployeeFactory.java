@@ -9,6 +9,8 @@
 package com.javatunes.personnel;
 
 import java.sql.Date;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Map;
 
 public class EmployeeFactory {
@@ -22,10 +24,27 @@ public class EmployeeFactory {
    * If the input map's "type" value is not "HE" or "SE", throw IllegalArgumentException with a suitable message.
    */
   public static Employee createEmployee(Map<String,String> inputMap)
-  throws IllegalArgumentException {
+      throws IllegalArgumentException {
     // return value
     Employee emp = null;
-    
+    String type = inputMap.get("type");
+    String name = inputMap.get("name");
+
+    Date hireDate = Date.valueOf(inputMap.get("hireDate"));
+
+
+    if(type != "HE" && type != "SE"){
+      throw new IllegalArgumentException("Type must be HE or SE");
+    }else if(type =="HE"){
+
+      Double rate = Double.parseDouble(inputMap.get("rate"));
+      Double hours = Double.parseDouble(inputMap.get("hours"));
+      emp = new HourlyEmployee(name, hireDate,rate,hours);
+    }else{
+
+      Double salary = Double.parseDouble(inputMap.get("salary"));
+      emp = new SalariedEmployee(name, hireDate, salary);
+    }
     return emp;
   }
 }

@@ -1,6 +1,9 @@
 package com.javatunes.personnel;
 
 import static org.junit.Assert.*;
+
+import java.sql.Date;
+import java.text.ParseException;
 import java.util.HashMap;
 import java.util.Map;
 import org.junit.Before;
@@ -51,8 +54,11 @@ public class EmployeeFactoryTest {
    *   assertEquals(SalariedEmployee.class, emp.getClass())
    */
   @Test
-  public void testCreateEmployeeSalaried() {
-    // TODO
+  public void testCreateEmployeeSalaried(){
+    SalariedEmployee emp = (SalariedEmployee) EmployeeFactory.createEmployee(seMap);
+    assertEquals("Jackie", emp.getName());
+    assertEquals(Date.valueOf("1990-08-24"), emp.getHireDate());
+    assertEquals(50000.0, emp.getSalary(), 0.0001);
   }
   
   /**
@@ -60,7 +66,8 @@ public class EmployeeFactoryTest {
    */
   @Test
   public void testCreateEmployeeHourly() {
-    // TODO
+    HourlyEmployee emp = (HourlyEmployee) EmployeeFactory.createEmployee(heMap);
+    assertEquals("Jackie", emp.getName());
   }
   
   /**
@@ -69,6 +76,6 @@ public class EmployeeFactoryTest {
    */
   @Test
   public void testCreateEmployeeInvalidTypeThrowsIllegalArgumentException() {
-    // TODO
+    Map<String,String> invalidEmployee = new HashMap<>(seMap);
   }
 }
