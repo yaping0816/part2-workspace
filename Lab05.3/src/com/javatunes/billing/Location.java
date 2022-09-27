@@ -9,5 +9,28 @@
 package com.javatunes.billing;
 
 public enum Location {
-  USA, EUROPE, ONLINE
+  USA{  //{}m make usa a subclass of this enum
+    //private class UsaSubclass extends Location
+    @Override
+    public TaxCalculator calculator() {
+      return new USATax();
+    }
+
+  },
+  EUROPE{
+    @Override
+    public TaxCalculator calculator() {
+      return new EuropeTax();
+    }
+  },
+  ONLINE{
+    @Override
+    public TaxCalculator calculator() {
+      return new OnlineTax();
+    }
+  };
+
+  public abstract TaxCalculator calculator();
+
+
 }
