@@ -25,8 +25,13 @@ public class StringSortTest {
     Comparator<String> ascendingLengthComparator = (str1, str2) -> str1.length() - str2.length();
     
     System.out.println("Names sort - increasing length - lambda:");
-//    names.sort( (name1, name2) -> name1.length() - name2.length() );
-    names.sort( ascendingLengthComparator );
+    names.sort(new Comparator<String>() {
+      @Override
+      public int compare(String name1, String name2) {
+        return name1.length() - name2.length();
+      }
+    });
+//    names.sort( ascendingLengthComparator );
     System.out.println(names + "\n");
     
     System.out.println("Sports sort - increasing length - lambda:");
