@@ -10,8 +10,7 @@ package com.javatunes.personnel;
 
 import java.sql.Date;
 
-public class Employee
-implements Comparable<Employee> {
+public class Employee implements Comparable<Employee> {
   private Long id;
   private String name;
   private Date hireDate;
